@@ -15,7 +15,7 @@ app.get('/', function(req, res) {
   res.send('Welcome 2da\'s blog');
 });
 
-//Sementic URL
+//Semantic URL
 app.get('/topic/:id', function(req, res){
   var topics = [
     'Javascript is...',
