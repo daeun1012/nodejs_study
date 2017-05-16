@@ -3,7 +3,7 @@
 <ul>
   <li>express</li>
   <li>underscore</li>
-  <li>jade</li>
+  <li>pug(구.jade)</li>
 </ul>
 
 > https://opentutorials.org/module/2026

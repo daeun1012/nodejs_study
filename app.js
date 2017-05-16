@@ -1,6 +1,11 @@
 //Main(Entry) Application
 const express = require('express');
 const app = express();
+//pug code pretty
+app.locals.pretty = true;
+//pug (jade)
+app.set('view engine', 'pug');
+app.set('views', './views');
 //static file dir
 app.use(express.static('public'));
 
@@ -8,6 +13,10 @@ app.use(express.static('public'));
 //get 방식
 app.get('/', function(req, res) {
   res.send('Welcome 2da\'s blog');
+});
+
+app.get('/template', function(req, res) {
+  res.render('temp', {time:Date(), _title:'Jade'});
 });
 
 app.get('/dynamic', function (req, res) {
