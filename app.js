@@ -1,5 +1,6 @@
 //Main(Entry) Application
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 //pug code pretty
 app.locals.pretty = true;
@@ -8,11 +9,24 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 //static file dir
 app.use(express.static('public'));
+//bodyParser (post method)
+app.use(bodyParser.urlencoded({extended:false}));
 
 //router
 //get 방식
 app.get('/', function(req, res) {
   res.send('Welcome 2da\'s blog');
+});
+
+app.get('/form', function(req, res) {
+  res.render('form');
+});
+
+//post
+app.post('/form_receiver', function(req, res) {
+  var title = req.body.title;
+  var description = req.body.description;
+  res.send(title + ',' + description);
 });
 
 //Semantic URL
