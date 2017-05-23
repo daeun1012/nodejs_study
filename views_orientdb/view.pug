@@ -4,18 +4,19 @@ html
     meta(charset='utf-8')
   body
     h1
-      a(href='/topic') server Side JavaScript
+      a(href='/topic') Server Side JavaScript
     ul
-      each topic in topics
+      each temp in topics
         li
-          - rid = encodeURIComponent(topic['@rid'])
-          a(href='/topic/'+rid)= topic.title
+          - rid = encodeURIComponent(temp['@rid'])
+          a(href='/topic/' + rid)= temp.title
     article
       if topic
         h2= topic.title
-        p= topic.description
+        div= topic.description
+        div= 'by ' + topic.author
       else
         h2 Welcome
-        p This is server side javascript tutorial.
-    div
-      a(href='topic/new') new
+        div This is server side javascript tutorial.
+      p
+        a(href='/topic/add') add
