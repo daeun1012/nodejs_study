@@ -60,6 +60,37 @@ app.get(['/topic', '/topic/:id'], function (req, res) {
   });
 });
 
+app.get('/topic/:id/edit', function(req, res) {
+  var sql = 'SELECT id, title FROM topic';
+  c.query(sql, function(err, topics) {
+    var id = req.params.id;
+    if(err) {
+      showError(err, res);
+    } else if(id){
+      c.query('SELECT * FROM topic WHERE id = ' + id, function(err, topic) {
+        if(err)
+          showError(err, res);
+        res.render('edit', {topics:topics, topic:topic[0], isEmpty:false});
+      });
+    } else {
+      showError('There is no id.', res);
+    }
+  });
+});
+
+app.post('/topic/:id/edit', function(req, res) {
+  var title = req.body.title;
+  var description = req.body.description;
+  var author = req.body.author;
+  var id = req.params.id;
+  var sql = 'UPDATE topic SET title=?, description=?, author=? WHERE id=?';
+  c.query(sql, [title, description, author, id], function(err, topic) {
+    if(err)
+      showError(err, res);
+    res.redirect('/topic/'+id);
+  });
+});
+
 app.listen(3000, function() {
   console.log('Connected 3000 port!');
 });
