@@ -91,6 +91,33 @@ app.post('/topic/:id/edit', function(req, res) {
   });
 });
 
+app.get('/topic/:id/delete', function(req, res) {
+  var sql = 'SELECT id, title FROM topic';
+  c.query(sql, function(err, topics) {
+    var id = req.params.id;
+    if(err) {
+      showError(err, res);
+    } else if(id){
+      c.query('SELECT * FROM topic WHERE id = ' + id, function(err, topic) {
+        if(err)
+          showError(err, res);
+        res.render('delete', {topics:topics, topic:topic[0], isEmpty:false});
+      });
+    } else {
+      showError('There is no id.', res);
+    }
+
+  });
+});
+
+app.post('/topic/:id/delete', function(req, res) {
+  var id = req.params.id;
+  var sql = 'DELETE FROM topic WHERE id=?';
+  c.query(sql, [id], function(err, result) {
+    res.redirect('/topic/');
+  });
+});
+
 app.listen(3000, function() {
   console.log('Connected 3000 port!');
 });
