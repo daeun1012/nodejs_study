@@ -12,6 +12,7 @@
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
+    "express-session": "^1.15.3",
     "mariasql": "^0.2.6",
     "orientjs": "^2.2.5",
     "pm2": "^2.4.6",
