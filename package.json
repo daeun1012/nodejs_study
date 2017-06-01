@@ -17,6 +17,7 @@
     "orientjs": "^2.2.5",
     "pm2": "^2.4.6",
     "pug": "^0.1.0",
+    "session-file-store": "^1.0.0",
     "underscore": "^1.8.3"
   }
 }
