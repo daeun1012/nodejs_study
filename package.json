@@ -10,9 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "connect-mariasql": "0.0.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
+    "express-mysql-session": "^1.2.0",
     "express-session": "^1.15.3",
+    "express-sql-session": "^1.0.0",
     "mariasql": "^0.2.6",
     "orientjs": "^2.2.5",
     "pm2": "^2.4.6",

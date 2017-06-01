@@ -1,0 +1,10 @@
+before_script:
+    - "mysql -e 'DROP DATABASE IF EXISTS session_test; CREATE DATABASE session_test;'"
+
+env:
+    - DB_HOST="127.0.0.1" DB_PORT=3306 DB_USER="root" DB_PASS="" DB_NAME="session_test"
+
+language: node_js
+node_js:
+    - "0.11"
+    - "0.10"
